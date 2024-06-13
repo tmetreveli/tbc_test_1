@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <form method="POST" enctype=multipart/form-data style="text-align: center; display: flex; flex-direction: column;" class="form-register">
+        {{form.hidden_tag()}}
+
+        {{form.name.label}}
+        {{form.name(class="form-content", placeholer="Product Name")}}
+        
+        <br>
+        {{form.file.label}}
+        {{form.file(class="form-content", placeholer="Product file")}}
+        <br>
+        {{form.price.label}}
+        {{form.price(class="form-content", placeholer="Product Price")}}
+
+        {{form.password_hash.label}}
+        {{form.password_hash(class="form-content", placeholer="Password")}}
+        <br>
+
+        {{form.repeat_password.label}}
+        {{form.repeat_password(class="form-content", placeholer=" RepeatPassword")}}
+
+        <br>
+        {{form.submit}}
+    </form>
+</div>
+{% endblock %}

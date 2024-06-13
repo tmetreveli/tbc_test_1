@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div id="carouselExampleIndicators" class="container carousel slide height mb-5">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://alta.ge/images/promo/327/15pro_price1_web_ge.png" class="card-img-top" alt="bLA" style="height:400px">
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://assets.ee.ge/cms/slider_images/AU1jR2eRCb.jpg" class="card-img-top" alt="bLA" style="height:400px">
+        </div>
+          <div class="carousel-item">
+            <img src="https://alta.ge/images/promo/320/asus_rog_g14_16_web_mob_mtnz-26.png" class="card-img-top" alt="bLA" style="height:400px">
+        </div>
+          <div class="carousel-item">
+            <img src="https://alta.ge/images/promo/320/asus_rog_g14_16_web_mob_mtnz-26.png" class="card-img-top" alt="bLA" style="height:400px">
+        </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      </div>
+      {{current_user}}
+    <div class="container">
+        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-s-1 mt-500">
+          {% for product in products %}
+          {% set img = product.file %}
+            <div class="col" style="display: flex; justify-content: space-evenly;">
+                <div class="card" style="width: 18rem;">
+                    <img src= "{{ url_for('static', filename=img) }}" class="card-img-top" alt="bLA" >
+                    <div class="card-body">
+                      <h5 class="card-title">{{ product.name }}</h5>
+                      <p class="card-text">{{ product.price }}</p>
+                      <a href="/detail/{{product.id}}" class="btn btn-warning">Details</a>
+                      <a href="/delete/{{product.id}}" class="btn btn-danger">Delete product</a>
+                      <a href="/edit/{{product.id}}" class="btn btn-primary">Edit product</a>
+                    </div>
+                  </div>
+                  
+            </div>
+
+          {% endfor %}
+            
+          </div>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        
+    </div>   
+{% endblock %}
